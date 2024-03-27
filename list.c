@@ -28,43 +28,109 @@ Node * createNode(void * data) {
     return new;
 }
 
-List * createList() {
-     return NULL;
+List * createList() 
+{
+  List *list = (List*)malloc(sizeof(List));
+  list->head = NULL;
+  list->tail = NULL;
+  list->current = NULL;
+
+  return list;
 }
 
-void * firstList(List * list) {
+void * firstList(List * list) 
+{
+  list->current = list->head;
+  if (list->current) 
+  {
+    list->current = list->head;
+    return list->current->data;
+  }
+  return NULL;
+}
+
+void * nextList(List * list)
+{
+
+  if(list->current != NULL)
+  {
+    list->current = list->current->next;
+  }
+  if(list->current != NULL)
+  {
+    return list->current->data;
+  }
+  return NULL;
+
+}
+
+void * lastList(List * list) 
+{
+  if (list->head == NULL)
+  {
     return NULL;
+  }
+    while(list->current->next != NULL)
+      {
+        list->current = list->current->next;
+      }
+  return list->current->data;
 }
 
-void * nextList(List * list) {
+void * prevList(List * list) 
+{
+  if (list->head == NULL || list->current ==list->head)
+  {
     return NULL;
+  }
+  Node *nodoPrev = list->head;
+
+  if (list->current == NULL)return NULL;
+
+  while(nodoPrev->next != list->current)
+  {
+    nodoPrev = nodoPrev->next;
+  }
+  list->current = nodoPrev;
+  return nodoPrev->data;
+
 }
 
-void * lastList(List * list) {
-    return NULL;
+void pushFront(List * list, void * data) 
+{
+  Node *newNodo = (Node *)malloc(sizeof(Node));
+  newNodo->prev = NULL;
+  newNodo->data = data;
+  newNodo->next = list->head;
+  if(list->head != NULL)
+  {
+    list->head->prev = newNodo;  
+  }
+  list->head = newNodo;
+  if(list->tail == NULL)
+  {
+    list->tail = newNodo;
+  }
 }
 
-void * prevList(List * list) {
-    return NULL;
-}
-
-void pushFront(List * list, void * data) {
-}
-
-void pushBack(List * list, void * data) {
+void pushBack(List * list, void * data) 
+{
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, void * data) {
+void pushCurrent(List * list, void * data) 
+{
 }
 
-void * popFront(List * list) {
+void * popFront(List * list) 
+{
     list->current = list->head;
     return popCurrent(list);
 }
 
-void * popBack(List * list) {
+void * popBack(List * list) 
+{
     list->current = list->tail;
     return popCurrent(list);
 }
