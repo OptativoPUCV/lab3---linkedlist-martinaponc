@@ -55,3 +55,12 @@ list.c:181:1: error: expected identifier or ‘(’ before ‘}’ token
       | ^
 Compilation failed
 87f897f
+Fri 29 Mar 2024 11:35:49 PM UTC: 
+ list.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+In file included from test.c:5:
+list.c:190:1: error: expected identifier or ‘(’ before ‘}’ token
+  190 | }
+      | ^
+Compilation failed
+5c50413
