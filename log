@@ -4,3 +4,27 @@ Wed 27 Mar 2024 08:27:09 PM UTC:
  tests:  10|2
 total_score: 45/70
 a59d646
+Fri 29 Mar 2024 11:26:11 PM UTC: 
+ list.c | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+In file included from test.c:5:
+list.c: In function ‘pushCurrent’:
+list.c:126:14: error: ‘return’ with a value, in function returning void [-Werror=return-type]
+  126 |       return NULL;
+      |              ^~~~
+list.c:122:6: note: declared here
+  122 | void pushCurrent(List * list, void * data)
+      |      ^~~~~~~~~~~
+list.c:152:12: error: ‘return’ with a value, in function returning void [-Werror=return-type]
+  152 |     return datos;
+      |            ^~~~~
+list.c:122:6: note: declared here
+  122 | void pushCurrent(List * list, void * data)
+      |      ^~~~~~~~~~~
+list.c: At top level:
+list.c:155:1: error: expected identifier or ‘(’ before ‘}’ token
+  155 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+8a04621

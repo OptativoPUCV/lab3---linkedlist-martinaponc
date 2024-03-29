@@ -121,6 +121,37 @@ void pushBack(List * list, void * data)
 
 void pushCurrent(List * list, void * data) 
 {
+  if(list->current == NULL)
+    {
+      return NULL;
+    }
+    Node *nodoEliminar = list->current;
+    void *datos = nodoEliminar->data;
+    if(nodoEliminar == list->head && nodoEliminar == list->tail)
+    {
+      list->head = list->tail = NULL;
+    }
+    else if(nodoEliminar == list->head)
+    {
+      list->head = list->head->next;
+      list->head->prev = NULL;
+    }
+    else if(nodoEliminar == list->tail)
+    {
+      list->tail = list->tail->prev;
+      list->tail->next = NULL;
+    }
+    else
+    {
+     nodoEliminar->prev->next = nodoEliminar->next;
+     nodoEliminar->next->prev = nodoEliminar->prev; 
+    }
+
+    free(nodoEliminar);
+    list->current = NULL;
+    return datos;
+
+  }
 }
 
 void * popFront(List * list) 
