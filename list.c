@@ -123,7 +123,7 @@ void pushCurrent(List * list, void * data)
 {
   if(list->current == NULL)
     {
-      return NULL;
+      return;
     }
     Node *nodoEliminar = list->current;
     void *datos = nodoEliminar->data;
