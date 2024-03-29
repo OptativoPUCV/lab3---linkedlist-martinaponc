@@ -46,3 +46,12 @@ list.c:155:1: error: expected identifier or ‘(’ before ‘}’ token
 cc1: all warnings being treated as errors
 Compilation failed
 be37def
+Fri 29 Mar 2024 11:35:06 PM UTC: 
+ list.c | 48 +++++++++++++++++++++++++++++-------------------
+ 1 file changed, 29 insertions(+), 19 deletions(-)
+In file included from test.c:5:
+list.c:181:1: error: expected identifier or ‘(’ before ‘}’ token
+  181 | }
+      | ^
+Compilation failed
+87f897f

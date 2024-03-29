@@ -115,15 +115,41 @@ void pushFront(List * list, void * data)
 
 void pushBack(List * list, void * data) 
 {
-    list->current = list->tail;
-    pushCurrent(list,data);
+  if(list->current == NULL)
+  {
+    pushFront(list,data);
+  }
+
+  Node *newNodo = (Node*)malloc(sizeof(Node));  
+  newNodo->data = data;
+  newNodo->prev = list->current;
+  list->tail = newNodo;
+  list->current->next = newNodo;
 }
 
 void pushCurrent(List * list, void * data) 
 {
-  if(list->current == NULL)
+
+}
+
+void * popFront(List * list) 
+{
+    list->current = list->head;
+    return popCurrent(list);
+}
+
+void * popBack(List * list) 
+{
+    list->current = list->tail;
+    return popCurrent(list);
+}
+
+void * popCurrent(List * list) 
+{
+  
+   if(list->current == NULL)
     {
-      return;
+      return NULL;
     }
     Node *nodoEliminar = list->current;
     void *datos = nodoEliminar->data;
@@ -152,22 +178,6 @@ void pushCurrent(List * list, void * data)
     return datos;
 
   }
-}
-
-void * popFront(List * list) 
-{
-    list->current = list->head;
-    return popCurrent(list);
-}
-
-void * popBack(List * list) 
-{
-    list->current = list->tail;
-    return popCurrent(list);
-}
-
-void * popCurrent(List * list) {
-    return NULL;
 }
 
 void cleanList(List * list) {
